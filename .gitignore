@@ -134,3 +134,14 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Project specific backups
+old_site/
+
+# OS specific files
+.DS_Store
+*.swp
+Thumbs.db
+node_modules
+.next
+
