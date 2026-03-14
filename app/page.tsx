@@ -54,10 +54,10 @@ export default function Home() {
         <nav className="flex items-center gap-6 text-sm font-medium text-muted">
           <SettingsModal />
           <Link href="https://github.com/miliomos/kapu1.hu" className="hover:text-foreground transition-colors hidden sm:block">Kontribució</Link>
-          <div className="bg-card border border-border px-4 py-2 rounded-full text-foreground hover:bg-card-hover transition-colors cursor-pointer flex items-center gap-2">
+          {/*div className="bg-card border border-border px-4 py-2 rounded-full text-foreground hover:bg-card-hover transition-colors cursor-pointer flex items-center gap-2">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             Keresés
-          </div>
+          </div*/}
         </nav>
       </header>
 
@@ -119,10 +119,10 @@ export default function Home() {
 
       <footer className="w-full max-w-5xl mt-24 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted">
         <p>Copyright © 2026, All Rights Reserved</p>
-        <div className="flex gap-4">
+        {/*div className="flex gap-4">
           <Link href="#" className="hover:text-foreground transition-colors">Adatkezelés</Link>
           <Link href="#" className="hover:text-foreground transition-colors">Rólunk</Link>
-        </div>
+        </div*/}
       </footer>
     </div>
   );
