@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@source "./app/**/*.{js,ts,jsx,tsx,mdx}";
+
+@theme inline {
+  --color-brand: #3b82f6;
+  --color-brand-hover: #60a5fa;
+
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  --font-sans: var(--font-inter);
+}
+
+:root {
+  /* Light Theme Colors */
+  --bg: #ffffff;
+  --fg: #020617;
+  --card: #f1f5f9;
+  --card-hover: #e2e8f0;
+  --muted: #64748b;
+  --border: #cbd5e1;
+}
+
+.dark {
+  /* Dark Theme Colors */
+  --bg: #020617;
+  --fg: #f8fafc;
+  --card: #0f172a;
+  --card-hover: #1e293b;
+  --muted: #94a3b8;
+  --border: #334155;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
