@@ -2,16 +2,25 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { Sun, Moon, Settings, X } from "lucide-react";
+import { Sun, Moon, Settings, MapPin, MapPinOff } from "lucide-react";
 
 export default function SettingsModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [locationPreference, setLocationPreference] = useState<string>("deny");
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
+    const saved = localStorage.getItem("location-preference");
+    if (saved) setLocationPreference(saved);
   }, []);
+
+  const handleLocationChange = (pref: string) => {
+    localStorage.setItem("location-preference", pref);
+    setLocationPreference(pref);
+    window.dispatchEvent(new CustomEvent("location-preference-updated"));
+  };
 
   if (!mounted) return null;
 
@@ -71,6 +80,42 @@ export default function SettingsModal() {
                     aria-label="Sötét téma"
                   >
                     <Moon className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <label className="text-sm font-medium text-foreground">
+                    Helymeghatározás
+                  </label>
+                  <p className="text-xs text-muted">
+                    Helyi időjárás mutatása
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2 bg-background p-1 rounded-full border border-border">
+                  <button
+                    onClick={() => handleLocationChange("deny")}
+                    className={`flex items-center justify-center w-8 h-8 rounded-full transition-all cursor-pointer ${
+                      locationPreference === "deny" 
+                        ? "bg-orange-500/10 text-orange-500 shadow-sm" 
+                        : "text-muted hover:text-foreground"
+                    }`}
+                    aria-label="Elutasítva"
+                  >
+                    <MapPinOff className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => handleLocationChange("allow")}
+                    className={`flex items-center justify-center w-8 h-8 rounded-full transition-all cursor-pointer ${
+                      locationPreference === "allow" 
+                        ? "bg-brand/10 text-brand shadow-sm" 
+                        : "text-muted hover:text-foreground"
+                    }`}
+                    aria-label="Engedélyezve"
+                  >
+                    <MapPin className="w-4 h-4" />
                   </button>
                 </div>
               </div>
